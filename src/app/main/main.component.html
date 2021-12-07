@@ -1,0 +1,114 @@
+<div class="content">
+    <div class="content-main">
+        <div class="content-grid">
+            <!--<div class="flex-container"
+                *ngIf="os.result!=null && os.result.results.length>0"
+                fxLayout="row layout-wrap"
+                fxFlex="100"
+                fxLayoutAlign="center start"
+                fxLayoutGap.xs="0">
+                <div *ngFor="let img of os.result.results" fxFlex="33" fxLayoutAlign="center" class="container-pd">
+                    <div class="img-container">
+                        <img class="img app-click" [src]="img.urls.small" [routerLink]="['/detail', img.id]" alt="{{img.alt_description}}" title="{{img.description}}">
+                        <div class="img-user">
+                            <img [src]="img.user.profile_image.small" alt="{{img.user.username}" title="{{img.user.username}">
+                            <p>{{img.user.username}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>-->
+            <div class="flex-container"
+                *ngIf="os.result!=null && os.result.results.length>0"
+                fxLayout="row layout-wrap"
+                fxFlex="100"
+                fxLayoutAlign="center start"
+                fxLayoutGap.xs="0">
+                <div fxFlex="33" fxLayoutAlign="center" class="container-pd">
+                    <div class="flex-container"
+                        fxLayout="column layout-wrap"
+                        fxLayoutAlign="center start"
+                        fxLayoutGap.xs="0">
+                        <div class="img-container" *ngFor="let img of os.col1" >
+                            <img class="img app-click" [src]="img.urls.small" [routerLink]="['/detail', img.id]" alt="{{img.alt_description}}" title="{{img.description}}">
+                            <div class="img-user">
+                                <img [src]="img.user.profile_image.small" alt="{{img.user.username}" title="{{img.user.username}">
+                                <p>{{img.user.username}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div fxFlex="33" fxLayoutAlign="center" class="container-pd">
+                    <div class="flex-container"
+                        fxLayout="column layout-wrap"
+                        fxLayoutAlign="center start"
+                        fxLayoutGap.xs="0">
+                        <div class="img-container" *ngFor="let img of os.col2" >
+                            <img class="img app-click" [src]="img.urls.small" [routerLink]="['/detail', img.id]" alt="{{img.alt_description}}" title="{{img.description}}">
+                            <div class="img-user">
+                                <img [src]="img.user.profile_image.small" alt="{{img.user.username}" title="{{img.user.username}">
+                                <p>{{img.user.username}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div fxFlex="33" fxLayoutAlign="center" class="container-pd">
+                    <div class="flex-container"
+                        fxLayout="column layout-wrap"
+                        fxLayoutAlign="center start"
+                        fxLayoutGap.xs="0">
+                        <div class="img-container" *ngFor="let img of os.col3" >
+                            <img class="img app-click" [src]="img.urls.small" [routerLink]="['/detail', img.id]" alt="{{img.alt_description}}" title="{{img.description}}">
+                            <div class="img-user">
+                                <img [src]="img.user.profile_image.small" alt="{{img.user.username}" title="{{img.user.username}">
+                                <p>{{img.user.username}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-container"
+                *ngIf="os.result!=null && !(os.result.results.length>0)"
+                fxLayout="row wrap"
+                fxFlex="100"
+                fxLayoutAlign="center start"
+                fxLayoutGap="10px"
+                fxLayoutGap.xs="0">
+                <div fxFlex="100">
+                    <div class="info">
+                        <span class="material-icons icon-warning">
+                            warning
+                        </span> 
+                        <p><em>No existen resultados para esta busqueda</em></p>
+                    </div>
+                </div>
+            </div> 
+            <div class="flex-container"
+                *ngIf="os.result==null"
+                fxLayout="row wrap"
+                fxFlex="100"
+                fxLayoutAlign="center start"
+                fxLayoutGap="10px"
+                fxLayoutGap.xs="0">
+                <div fxFlex="100">
+                    <div class="info">
+                        <span class="material-icons icon-info">
+                                info
+                        </span> 
+                        <p>Álvaro Fernández Martínez</p>
+                        <p><em>Prueba técnica para puesto AV401</em></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="foot-content">
+    <mat-paginator
+        *ngIf="os.result!=null && os.result.results.length>0"
+        [length]="os.length"
+        [pageSize]="os.pageSize"
+        [pageSizeOptions]="os.pageSizeOptions"
+        (page)="onPageChange($event)"
+        class="bg-color">
+    </mat-paginator>
+</div>

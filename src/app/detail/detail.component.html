@@ -1,0 +1,67 @@
+<div class="content-detail">
+    <div class="content-detail-inside">
+        <div class="content-grid flex-container"
+                fxLayout="row layout-wrap"
+                fxFlex="100"
+                fxLayoutAlign="center start"
+                fxLayoutGap.xs="0">
+            <div fxFlex="40" fxLayoutAlign="center">
+                <img class="img img-detail app-click" [src]="result.urls.regular" 
+                    (click)="popUp=true"
+                    title="{{result.description}}" 
+                    alt="{{result.alt_description}}"/>
+            </div>
+            <div class="info-detail" fxFlex="40" fxLayoutAlign="center" fxLayout="column layout-wrap">
+                <div  class="all-details">
+                    <div fxLayout="row layout-wrap">
+                        <div fxFlex="90" class="user-text">
+                            <p><strong>{{result.user.username}}</strong></p>
+                            <p>{{result.user.first_name}} {{result.user.last_name}}</p>
+                        </div>
+                        <div fxFlex="10">
+                            <img class="user-img" [src]="result.user.profile_image.medium" title="{{result.user.username}}" alt="{{result.user.username}}">
+                        </div>  
+                    </div>
+                    <div>
+                        <p><strong>{{result.description}}</strong></p>
+                        <p>Tamaño: {{result.height}}x{{result.width}}</p>
+                        <p>Foto creada: {{result.created_at | date:'dd/MM/yyyy'}}</p>
+                        <p>Foto Subida: {{result.updated_at | date:'dd/MM/yyyy'}}</p>
+                        <p>
+                            <mat-icon>thumb_up_off_alt</mat-icon> {{result.likes}}
+                            <mat-icon>cloud_download</mat-icon> {{result.downloads}}
+                        </p>
+                    </div>
+                    <div>
+                        <p>{{result.location.city}} {{result.location.country}} </p>
+                        <p>{{result.location.name}}</p>
+                    </div>
+                </div>
+                <div class="all-details">
+                    <a href="{{result.links.html}}" target="_blank"><mat-icon>link</mat-icon> Descarga</a>
+                </div>
+                <div class="tags">
+                    <mat-chip-list>
+                        <mat-chip class="curso-important" *ngFor="let tag of result.tags" (click)="searchTag(tag.title)">{{tag.title}}</mat-chip>
+                    </mat-chip-list>
+                </div>
+                <div class="all-details" *ngIf="result.location.position!=null && result.location.position.latitude!=null && result.location.position.longitude!=null">
+                    <iframe [src]="getGoogleMapsUrl(result.location.position.latitude,result.location.position.longitude)" width="100%" height="450" 
+                        style="border:0;" allowfullscreen loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>   
+<div *ngIf="popUp">
+    <div class="big-photo-close" (click)="popUp=false">
+            X
+    </div>
+    <div class="container-big-photo">
+        <div class="big-photo">
+            <img [src]="result.urls.regular" 
+                title="{{result.description}}" 
+                alt="{{result.alt_description}}"/>
+        </div>
+    </div>
+</div>

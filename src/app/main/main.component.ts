@@ -1,31 +1,30 @@
-import { Component } from '@angular/core';
-import { opSearch } from './general-val';
-import { UnsplashService } from './unsplash.service';
-import { Router } from '@angular/router';
-
-
+import { Component, OnInit } from '@angular/core';
+import { opSearch } from '../general-val';
+import { UnsplashService } from '../unsplash.service';
+import { AppComponent } from '../app.component';
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.sass'],
+  selector: 'app-main',
+  templateUrl: './main.component.html',
+  styleUrls: ['./main.component.sass'],
   providers: [UnsplashService]
 })
-
-export class AppComponent {
-  title = 'project-AV410';
+export class MainComponent implements OnInit {
   os = opSearch;
-  constructor(private UnsplashService: UnsplashService, private router: Router) {}
+  constructor(private UnsplashService: UnsplashService) { }
 
-  searchByKey(event) {
-    if(event.keyCode === 13){
+  onPageChange(event){
+    opSearch.pageIndex = 1+event.pageIndex;
+    opSearch.previousPageIndex = event.previousPageIndex;
+    opSearch.pageSize = event.pageSize;
+    this.searchImg();
+  }
+  ngOnInit(): void {
+    if(this.os.result!=null && this.os.result!=undefined){
       this.searchImg();
-   }
+    }
   }
 
   searchImg() {
-    this.os.length = 1;
-    this.os.previousPageIndex = 1;
-    this.os.pageIndex = 1;
     this.os.col1=[];
     this.os.col2=[];
     this.os.col3=[];
@@ -41,12 +40,9 @@ export class AppComponent {
                     }else{
                       this.os.col3.push(element);
                     }
-       
       });
       this.os.result = result;
       this.os.length = result.total;
-      this.router.navigateByUrl('/');
    })
  }
-
 }
