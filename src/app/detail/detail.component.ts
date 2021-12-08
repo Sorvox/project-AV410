@@ -18,6 +18,7 @@ export class DetailComponent implements OnInit {
   os = opSearch;
   popUp:boolean;
   loading:boolean;
+  galleryWith: number;
 
   constructor(private route: ActivatedRoute,
     private UnsplashService: UnsplashService,
@@ -29,6 +30,7 @@ export class DetailComponent implements OnInit {
     this.getImg(this.id);
     this.popUp=false;
     this.loading = false;
+    this.galleryWith = 0;
   }
 
   getImg(id) {
@@ -36,6 +38,7 @@ export class DetailComponent implements OnInit {
     this.UnsplashService.getImg(id)
     .subscribe((result: any) => {
       this.result = result;
+      this.galleryWith = 45/(result.height/result.width);
       this.loading = false;
    })
   }

@@ -76,7 +76,9 @@
     </div>
     <div class="container-big-photo">
         <div class="big-photo">
-            <img [src]="result.urls.regular" 
+            
+            <img [src]="result.urls.regular"
+                style="max-width: {{this.galleryWith}}%"
                 title="{{result.description}}" 
                 alt="{{result.alt_description}}"/>
         </div>
