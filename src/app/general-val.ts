@@ -11,6 +11,7 @@ export class optionsSerach {
     col1?: any;
     col2?: any;
     col3?: any;
+    loading!: boolean;
 }
 enum TipeList {
     list = 0,
@@ -35,5 +36,6 @@ opSearch = {
     pageSizeOptions: [10,15,20],
     col1: null,
     col2: null,
-    col3: null
+    col3: null,
+    loading: false
 }

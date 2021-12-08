@@ -97,3 +97,20 @@ body
     .icon-error
         font-size: 10em
         color: #ff0000
+
+.spin
+    animation: spin 4s infinite
+    -webkit-animation: spin 4s infinite
+    -moz-animation: spin 4s infinite
+
+@keyframes spin
+    100%  
+        transform: rotate(360deg)
+
+@-webkit-keyframes spin
+    100%  
+        transform: rotate(360deg)
+
+@-moz-keyframes spin
+    100%  
+        transform: rotate(360deg)

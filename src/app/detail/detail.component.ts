@@ -17,6 +17,7 @@ export class DetailComponent implements OnInit {
   public result;
   os = opSearch;
   popUp:boolean;
+  loading:boolean;
 
   constructor(private route: ActivatedRoute,
     private UnsplashService: UnsplashService,
@@ -27,12 +28,15 @@ export class DetailComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
     this.getImg(this.id);
     this.popUp=false;
+    this.loading = false;
   }
 
   getImg(id) {
+    this.loading=true;
     this.UnsplashService.getImg(id)
     .subscribe((result: any) => {
       this.result = result;
+      this.loading = false;
    })
   }
 
@@ -42,12 +46,6 @@ export class DetailComponent implements OnInit {
     this.os.previousPageIndex = 1;
     this.os.pageIndex = 1;
     this.router.navigateByUrl('/');
-    /*this.UnsplashService.searchImg()
-    .subscribe((result: any) => {
-      this.os.result = result;
-      this.os.length = result.total;
-      this.router.navigateByUrl('/');
-   })*/
   }
 
   getGoogleMapsUrl(latitude, longitude)

@@ -1,6 +1,23 @@
 <div class="content-detail">
     <div class="content-detail-inside">
+        <div class="flex-container"
+            *ngIf="loading"
+            fxLayout="row wrap"
+            fxFlex="100"
+            fxLayoutAlign="center start"
+            fxLayoutGap="10px"
+            fxLayoutGap.xs="0">
+            <div fxFlex="100">
+                <div class="info">
+                    <span class="material-icons icon-info spin">
+                        loop
+                    </span> 
+                    <p><em>Cargnado ...</em></p>
+                </div>
+            </div>
+        </div> 
         <div class="content-grid flex-container"
+                *ngIf="!loading"
                 fxLayout="row layout-wrap"
                 fxFlex="100"
                 fxLayoutAlign="center start"
