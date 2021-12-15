@@ -53,7 +53,8 @@ export class DetailComponent implements OnInit {
 
   getGoogleMapsUrl(latitude, longitude)
   {
-      let url = 'www.google.com/maps/embed/v1/view?key=AIzaSyCeC8VsX7xGk9CjL7JDGymGDMM3yCtQIUg&center='+latitude+','+longitude+'&maptype=satellite&zoom=18'
+      let key = 'XXXXXX';
+      let url = 'www.google.com/maps/embed/v1/view?key='+key+'&center='+latitude+','+longitude+'&maptype=satellite&zoom=18'
       return this.sanitizer.bypassSecurityTrustResourceUrl('https://'+ url +'/');
   }
 }
