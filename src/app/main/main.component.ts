@@ -10,7 +10,7 @@ import { AppComponent } from '../app.component';
 })
 export class MainComponent implements OnInit {
   os = opSearch;
-  public bz:string;
+  public fbg:string;
   constructor(private UnsplashService: UnsplashService) { }
 
   onPageChange(event){
@@ -24,15 +24,15 @@ export class MainComponent implements OnInit {
     if(this.os.result!=null && this.os.result!=undefined){
       this.searchImg();
     }
-    this.BuzzGame();
+    this.FizzBuzzGame();
   }
 
-  BuzzGame(){
-    this.bz = "";
+  FizzBuzzGame(){
+    this.fbg = "";
     for(let i = 1; i < 101;i++){
-      this.bz += ((i % 3 ? '' : 'Fizz') + (i % 5 ? '' : ((i % 3) ? 'Buzz' : ' Buzz')) || i) + ', ';
+      this.fbg += ((i % 3 ? '' : 'Fizz') + (i % 5 ? '' : ((i % 3) ? 'Buzz' : ' Buzz')) || i) + ', ';
     }
-    this.bz = this.bz.substring(0, this.bz.length - 2);
+    this.fbg = this.fbg.substring(0, this.fbg.length - 2);
   }
 
   searchImg() {
