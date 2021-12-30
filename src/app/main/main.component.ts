@@ -10,6 +10,7 @@ import { AppComponent } from '../app.component';
 })
 export class MainComponent implements OnInit {
   os = opSearch;
+  public bz:string;
   constructor(private UnsplashService: UnsplashService) { }
 
   onPageChange(event){
@@ -23,6 +24,15 @@ export class MainComponent implements OnInit {
     if(this.os.result!=null && this.os.result!=undefined){
       this.searchImg();
     }
+    this.BuzzGame();
+  }
+
+  BuzzGame(){
+    this.bz = "";
+    for(let i = 1; i < 101;i++){
+      this.bz += ((i % 3 ? '' : 'Fizz') + (i % 5 ? '' : ((i % 3) ? 'Buzz' : ' Buzz')) || i) + ', ';
+    }
+    this.bz = this.bz.substring(0, this.bz.length - 2);
   }
 
   searchImg() {
@@ -32,6 +42,7 @@ export class MainComponent implements OnInit {
     this.UnsplashService.searchImg()
     .subscribe((result: any) => {
       result.results.forEach((element, index) => {
+        //** Mosaic **/
         if(this.os.col1.length==0){
           this.os.col1.push(element);
         }else if(this.os.col1.length==this.os.col2.length && this.os.col1.length==this.os.col3.length){
