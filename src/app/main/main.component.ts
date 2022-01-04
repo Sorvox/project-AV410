@@ -24,13 +24,19 @@ export class MainComponent implements OnInit {
     if(this.os.result!=null && this.os.result!=undefined){
       this.searchImg();
     }
-    this.FizzBuzzGame();
+    this.FizzBuzzGame(3, 5, 'Fizz', 'Buzz');
   }
-
-  FizzBuzzGame(){
+  
+  Mod(divisor: number, dividing: number){
+    return divisor%dividing
+  }
+  
+  FizzBuzzGame(number1: number, number2:number, text1: string, text2: string){
     this.fbg = "";
     for(let i = 1; i < 101;i++){
-      this.fbg += ((i % 3 ? '' : 'Fizz') + (i % 5 ? '' : ((i % 3) ? 'Buzz' : ' Buzz')) || i) + ', ';
+      this.fbg += (( this.Mod(i,number1) ? '' : 'Fizz') 
+        + (this.Mod(i,number2)? '' : (this.Mod(i,number1) ? 'Buzz' : ' Buzz')) || i) 
+        + ', ';
     }
     this.fbg = this.fbg.substring(0, this.fbg.length - 2);
   }
