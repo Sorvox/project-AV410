@@ -19,26 +19,27 @@ export class MainComponent implements OnInit {
     opSearch.pageSize = event.pageSize;
     this.searchImg();
   }
+  
   ngOnInit(): void {
     opSearch.loading=false;
     if(this.os.result!=null && this.os.result!=undefined){
       this.searchImg();
     }
-    this.FizzBuzzGame(3, 5, 'Fizz', 'Buzz');
+    this.fbg=this.FizzBuzzGame(3, 5, 'Fizz', 'Buzz');
   }
   
   Mod(divisor: number, dividing: number){
     return divisor%dividing
   }
   
-  FizzBuzzGame(number1: number, number2:number, text1: string, text2: string){
-    this.fbg = "";
+  FizzBuzzGame(number1: number, number2:number, text1: string, text2: string): string{
+    let result:string;
     for(let i = 1; i < 101;i++){
-      this.fbg += (( this.Mod(i,number1) ? '' : text1) 
+      result += (( this.Mod(i,number1) ? '' : text1) 
         + (this.Mod(i,number2)? '' : (this.Mod(i,number1) ? text2 : ' ' + text2)) || i) 
         + ', ';
     }
-    this.fbg = this.fbg.substring(0, this.fbg.length - 2);
+    return result.substring(0, result.length - 2);
   }
 
   searchImg() {
