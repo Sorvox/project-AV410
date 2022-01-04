@@ -34,8 +34,8 @@ export class MainComponent implements OnInit {
   FizzBuzzGame(number1: number, number2:number, text1: string, text2: string){
     this.fbg = "";
     for(let i = 1; i < 101;i++){
-      this.fbg += (( this.Mod(i,number1) ? '' : 'Fizz') 
-        + (this.Mod(i,number2)? '' : (this.Mod(i,number1) ? 'Buzz' : ' Buzz')) || i) 
+      this.fbg += (( this.Mod(i,number1) ? '' : text1) 
+        + (this.Mod(i,number2)? '' : (this.Mod(i,number1) ? text2 : ' ' + text2)) || i) 
         + ', ';
     }
     this.fbg = this.fbg.substring(0, this.fbg.length - 2);
