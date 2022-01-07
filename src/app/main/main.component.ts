@@ -19,6 +19,7 @@ export class MainComponent implements OnInit {
     opSearch.pageSize = event.pageSize;
     this.searchImg();
   }
+  
   ngOnInit(): void {
     opSearch.loading=false;
     if(this.os.result!=null && this.os.result!=undefined){
