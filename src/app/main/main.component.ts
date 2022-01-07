@@ -24,15 +24,6 @@ export class MainComponent implements OnInit {
     if(this.os.result!=null && this.os.result!=undefined){
       this.searchImg();
     }
-    this.FizzBuzzGame();
-  }
-
-  FizzBuzzGame(){
-    this.fbg = "";
-    for(let i = 1; i < 101;i++){
-      this.fbg += ((i % 3 ? '' : 'Fizz') + (i % 5 ? '' : ((i % 3) ? 'Buzz' : ' Buzz')) || i) + ', ';
-    }
-    this.fbg = this.fbg.substring(0, this.fbg.length - 2);
   }
 
   searchImg() {

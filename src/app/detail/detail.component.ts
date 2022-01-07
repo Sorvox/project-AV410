@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { opSearch } from '../general-val';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { MainComponent } from '../main/main.component';
 
 @Component({
   selector: 'app-detail',
@@ -23,8 +24,10 @@ export class DetailComponent implements OnInit {
   constructor(private route: ActivatedRoute,
     private UnsplashService: UnsplashService,
     private sanitizer: DomSanitizer,
-    private router: Router) { }
-
+    private router: Router,
+    private MainComponent: MainComponent) { }
+  
+  
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
     this.getImg(this.id);
