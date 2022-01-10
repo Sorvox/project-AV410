@@ -4,7 +4,6 @@ import { ActivatedRoute } from '@angular/router';
 import { opSearch } from '../general-val';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { MainComponent } from '../main/main.component';
 
 @Component({
   selector: 'app-detail',
@@ -24,8 +23,7 @@ export class DetailComponent implements OnInit {
   constructor(private route: ActivatedRoute,
     private UnsplashService: UnsplashService,
     private sanitizer: DomSanitizer,
-    private router: Router,
-    private MainComponent: MainComponent) { }
+    private router: Router) { }
   
   
   ngOnInit(): void {
