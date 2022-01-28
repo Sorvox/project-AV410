@@ -54,7 +54,8 @@ export class DetailComponent implements OnInit {
 
   getGoogleMapsUrl(latitude, longitude)
   {
-      let key = 'AIzaSyCeC8VsX7xGk9CjL7JDGymGDMM3yCtQIUg';
+      //Change XXX for Key
+      let key = 'XXXXXXXX';
       let url = 'www.google.com/maps/embed/v1/view?key='+key+'&center='+latitude+','+longitude+'&maptype=satellite&zoom=18'
       return this.sanitizer.bypassSecurityTrustResourceUrl('https://'+ url +'/');
   }
